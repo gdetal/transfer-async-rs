@@ -1,0 +1,13 @@
+[package]
+name = "transfer-async"
+version = "0.1.0"
+authors = ["Gregory Detal <gregory.detal@tessares.net>"]
+edition = "2018"
+
+[dependencies]
+tokio = { version = "0.2", features = [ "io-util" ] }
+futures-core = "0.3.1"
+pin-project-lite = "0.1"
+
+[dev-dependencies]
+tokio = { version = "0.2", features = [ "full" ] }
