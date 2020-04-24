@@ -148,23 +148,22 @@ mod test {
     async fn proxy_loop(mut proxy: tokio::net::TcpListener) {
         // expect a single connection:
         let (socket, _) = proxy.accept().await.unwrap();
-            // perform a connect
-            let other = TcpStream::connect("127.0.0.1:12442").await.unwrap();
+        // perform a connect
+        let other = TcpStream::connect("127.0.0.1:12442").await.unwrap();
 
-            let res = transfer(socket, other).await.unwrap();
-            // TODO validate res
+        let _res = transfer(socket, other).await.unwrap();
+        // TODO validate res
     }
 
     async fn server_loop(mut server: tokio::net::TcpListener) {
         // expect a single connection:
         let (mut socket, _) = server.accept().await.unwrap();
-            // echo back to the client
-            loop {
-                let mut buffer = [0; 4096];
+        // echo back to the client
+        loop {
+            let mut buffer = [0; 4096];
 
-                socket.read(&mut buffer).await.unwrap();
-                socket.write(&buffer).await.unwrap();
-            }
+            socket.read(&mut buffer).await.unwrap();
+            socket.write(&buffer).await.unwrap();
         }
     }
 }
